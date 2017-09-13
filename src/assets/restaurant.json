@@ -1,0 +1,73 @@
+{
+    "restaurants": [
+            {
+                "name": "Good Fellas",
+                "street": "700 Van Ness",
+                "city": "Fresno",
+                "state": "CA",
+                "zip": "93721",
+                "dateVisited": "July 10th, 2017",
+                "_id": "1",
+                "latitude": 36.7357,
+                "longitude": 119.7845
+            },
+            {
+                "name": "Taco Truck",
+                "street": "700 Van Ness",
+                "city": "Fresno",
+                "state": "CA",
+                "zip": "93721",
+                "dateVisited": "July 13th, 2017",
+                "_id": "2",
+                "latitude": 36.7357,
+                "longitude": 119.7845
+            },
+            {
+                "name": "Kikus",
+                "street": "700 Van Ness",
+                "city": "Fresno",
+                "state": "CA",
+                "zip": "93721",
+                "dateVisited": "July 15th, 2017",
+                "_id": "3",
+                "latitude": 36.7364,
+                "longitude": 119.7862
+            },
+            {
+                "name": "Deli Delicious",
+                "street": "6034 W Figarden Dr",
+                "city": "Fresno",
+                "state": "CA",
+                "zip": "93722",
+                "latitude": 36.823998036,
+                "longitude": -119.8716180119
+            },
+            {
+                "name": "Press Box Grill",
+                "street": "6022 W Figarden Dr",
+                "city": "Fresno",
+                "state": "CA",
+                "zip": "93722",
+                "latitude": 36.823477036,
+                "longitude": -119.8702910119
+            },
+            {
+                "name": "Pizza Hut",
+                "street": "6015 W Figarden Dr",
+                "city": "Fresno",
+                "state": "CA",
+                "zip": "93722",
+                "latitude": 36.822671036,
+                "longitude": -119.8717190119
+            },
+            {
+                "name": "Pieology",
+                "street": "6709 N Riverside Dr #103",
+                "city": "Fresno",
+                "state": "CA",
+                "zip": "93704",
+                "latitude": 36.835788036,
+                "longitude": -119.9107190119
+            }
+        ]
+}

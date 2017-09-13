@@ -1,0 +1,131 @@
+ <div class="home-feed full-height">
+  <app-header></app-header>
+  <!-- Keep for dev purposes. Remove on deploy -->
+  <!-- <button class="btn btn-success waves-effect waves-light toggle-button"
+    *ngIf="showToggleButton"
+    (click)="showFeed = !showFeed">{{showFeed ? 'Toggle Feed' : 'Show Feed'}}</button> -->
+  <ion-content *ngIf="myUser && showFeed">
+    <ion-card class="home-feed_post margin--zero" *ngFor="let item of myUser.feed">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{item.user.picture}}">
+        </ion-avatar>
+        <h2>{{item.user.name}}</h2>
+        <p>{{item.user.dateStamp}}</p>
+      </ion-item>
+
+      <img src="{{item.post.picture}}" class="border-bottom--red">
+      <ion-fab right top>
+        <button ion-fab>
+          <ion-icon name="pin"></ion-icon>
+        </button>
+      </ion-fab>
+
+      <ion-card-content>
+        <p class="margin--zero"><b>{{item.post.userTag}}</b> {{item.post.postMessage}} <b>{{item.post.location}}</b></p>
+        <p>with <b>{{item.post.nameTags}}</b></p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col center text-center>
+          <ion-note>
+            {{item.post.ageOfPost}} ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col center text-center>
+          <button ion-button icon-left clear small 
+            class="waves-effect waves-light"
+            (click)="likePost(item.post)">
+            <ion-icon name="thumbs-up" [ngClass]="{'liked': item.post.liked}"></ion-icon>
+            <div>{{item.post.likes}}</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <button ion-button icon-left clear small 
+            class="waves-effect waves-light">
+            <ion-icon name="text"></ion-icon>
+            <div>{{item.post.comments}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+    <ion-card class="home-feed_post margin--zero">
+
+      <img src="./assets/images/peach-ct.jpeg" class="border-bottom--red">
+      <ion-fab right top>
+        <button ion-fab>
+          <ion-icon name="pin"></ion-icon>
+        </button>
+      </ion-fab>
+
+      <ion-item>
+        <ion-icon name="wine" item-left large ></ion-icon>
+        <h2>Institute of Fine Cocktails</h2>
+        <p>14 S. Hop Avenue, Madison, WI 53703</p>
+      </ion-item>
+
+      <ion-item>
+        <span item-left>18 min</span>
+        <span item-left>(2.6 mi)</span>
+        <button ion-button icon-left clear item-end>
+          <ion-icon name="navigate"></ion-icon>
+          Start
+        </button>
+      </ion-item>
+
+    </ion-card>
+  </ion-content>
+  <ion-content *ngIf="!showFeed || !myUser">
+    <ion-card *ngIf="!myUser">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="./assets/images/idk-plaid-logo.png">
+        </ion-avatar>
+        <h2>Welcome to IDK Eats!</h2>
+      </ion-item>
+
+      <ion-card-content>
+        <p>Hello and welcome to our amazing app! Feel free to look around, but if you want the full experience of the app you should sign up. Click the button below to get started!</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col center text-center>
+          <button ion-button icon-left clear medium 
+            class="waves-effect waves-light"
+            (click)="navigateTo('register')">
+            <div>Sign Up</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card *ngIf="myUser">
+      <div *ngIf="!myUser.preferences || !myUser.preferences.length">
+        <ion-item>
+          <ion-icon class="icon icon-md ion-md-restaurant"
+            name="restaurant"
+            role="img"></ion-icon>
+          <span>Finish your food preferences!</span>
+        </ion-item>
+
+        <ion-card-content>
+          <p>It seems like you're missing some info on your profile, adding some food preferences will make it easier for us to choose an awesome place to eat for you and your friends! Click the link below to get started!</p>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col center text-center>
+            <button ion-button icon-left clear medium 
+              class="waves-effect waves-light"
+              (click)="navigateTo('preferences')">
+              <div>Go to preferences</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+  </ion-content>
+  <app-nav [page]="'home'"></app-nav>
+</div>

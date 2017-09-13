@@ -1,0 +1,15 @@
+.search {
+    .search_bar {
+        background-color: color($colors, main-white);
+        padding: 0;
+        position: fixed;
+        top: 97px;
+        right: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .list-margin {
+        margin-top: 35px;
+    }
+}

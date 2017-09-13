@@ -1,0 +1,239 @@
+.queue {
+    padding: 56px 0px;
+    background-color: color($colors, main-white);
+    .scroll-content.scroll-content.scroll-content.scroll-content.scroll-content {
+        padding: 0px;
+    }
+
+    .queue_map {
+        margin: 0 -16px;
+
+        .map-container {
+            height: 30vh;
+            padding: 0px;
+
+            agm-map {
+                height: 30vh;
+                width: 100%;
+                position: fixed;
+                top: 56px;
+                left: 0;
+            }
+
+            .queue_button {
+                height: 52px;
+                width: 52px;
+                padding: 0;
+                border-radius: 50%;
+                font-size: 20px;
+                position: absolute;
+                top: 12px;
+                right: 2.5%;
+                font-size: 18px;
+                z-index: 5;
+            }
+
+            .queue_directions {
+                background-color: color($colors, danger);
+                position: absolute;
+                top: 20px;
+                right: 2.5%;
+                font-size: 18px;
+                z-index: 5;
+            }
+
+            .show-map {
+                z-index: 0;
+            }
+
+            .hide-map {
+                z-index: -1;
+            }
+        }
+    }
+
+    .restaurant-info-container {
+        height: 35vh;
+        .restaurant-info {
+            min-height: 230px;
+            border-bottom: 1px solid #ff4e4a;
+            padding: 0 0 15px;
+            width: 100%;
+            .list {
+                margin: 8px 0;
+            }
+
+            .queue_rating-container {
+                align-items: center;
+                .queue_rating {
+                    background-image: url('../assets/images/star.svg');
+                    background-size: contain;
+                    background-color: color($colors, ltish-gray);
+                    justify-content: space-around;
+                    width: 120px;
+                    height: 24px;
+                    .queue_star {
+                        background-image: url('../assets/images/star.svg');
+                        background-size: contain;
+                        background-color: color($colors, warning);
+                        height: 24px;
+                    }
+                }
+            }
+
+            .hours-container {
+                height: 24vh;
+                overflow-y: scroll;
+            }
+
+            .images-container {
+                height: 24vh;
+                overflow-y: scroll;
+
+                ion-scroll[scrollX] {
+                    white-space: nowrap;
+                    height: 120px;
+                    overflow: hidden;
+
+                    .scroll-item {
+                        display: inline-block;
+                    }
+
+                    ion-avatar img{
+                        margin: 10px;
+                    }
+                }
+
+                ion-scroll[scroll-avatar]{
+                    height: 60px;
+                }
+
+                /* Hide ion-content scrollbar */
+                ::-webkit-scrollbar{
+                    display:none;
+                }
+            }
+
+            .restaurant-name {
+                font-size: 24px;
+            }
+            .queue_info-container {
+                background-color: color($colors, main-white);
+                border-bottom-color: white;
+                .label {
+                    height: 100%;
+                    margin: 0;
+                    overflow: auto;
+                    .queue_item--padding {
+                        padding: 5px 15px;
+                    }
+                }
+                .scroll-zoom-wrapper {
+                    display: flex;
+                    overflow-x: auto;
+                    flex-flow: row nowrap;
+                    .scroll-item {
+                        max-height: 150px;
+                        margin: 0 5px;
+
+                    }
+                }
+                .queue_info-item {
+                    &.queue_info-item--margin {
+                        margin-bottom: 5px;
+                        white-space: normal;
+                    }
+                }
+            }
+        }
+    }
+
+    .action-bar {
+        margin: 40px 0px 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .queue_button-container {
+            height: 56px;
+            .badge {
+                color: color($colors, primary);
+                background-color: color($colors, main-white);
+                border: 1px solid color($colors, primary);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                position: relative;
+                top: -57px;
+                right: -36px;
+                bottom: 0;
+                bottom: 100%;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+            }
+        }
+        .queue_button {
+            height: 52px;
+            width: 52px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        .go-button {
+            background-color: #ff4e4a;
+            border-color: #ff4e4a;
+            font-size: 22px;
+            margin-top: 8px;
+            padding: 8px 16px;
+        }
+    }
+    .pictures-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        overflow-x: auto;
+        position: absolute;
+        width: 100%;
+        bottom: -30px;
+        left: 0;
+
+        .user-picture {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 2px solid #ff4e4a;
+        }
+
+        .members-picture {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            margin-left: 10px;
+            border: 2px solid #ff4e4a;
+        }
+    }
+
+    .no-padding {
+        padding: 0;
+    }
+}
+
+.ios {
+    .queue_menu--ios {
+        padding: 10px;
+        background-color: #007d87;
+        .segment-ios {
+            .segment-button {
+                background-color: color($colors, main-white);
+                border-color: color($colors, main-white);
+                &.segment-activated {
+                    background-color: color($colors, primary);
+                    color: color($colors, main-white);
+                }
+            }
+        }
+    }
+}

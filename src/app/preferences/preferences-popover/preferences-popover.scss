@@ -1,0 +1,30 @@
+
+.popover-content {
+    padding: 0;
+    .preferences-popover {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        border-bottom: 3px solid color($colors, main-red);
+        .popover-page {
+            margin: 16px 0;
+            .item {
+                .item-inner {
+                    .input-wrapper {
+                        .label {
+                            p {
+                                font-size: 16px;
+                                color: color($colors, dark-gray);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .preferences-popover_button-wrapper {
+            .preferences-popover_button {
+                background-color: color($colors, main-red);
+            }
+        }
+    }
+}

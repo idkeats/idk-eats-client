@@ -1,0 +1,86 @@
+
+
+.profile {
+    .profile_content {
+        margin: 0 -16px;
+        .profile_cover {
+            height: 196px;
+            width: 100%;
+            margin-top: -20px;
+            overflow: hidden;
+            border-bottom: 4px solid color($colors, primary);
+            .profile_cover-img {
+                width: 100%;
+            }
+        }
+        .flex-container {
+            &.profile_menu {
+                padding: 0 16px;
+                justify-content: space-around;
+                align-items: center;
+                position: absolute;
+                top: 170px;
+                right: 0;
+                left: 0;
+                .profile_pic {
+                    height: 150px;
+                    width: 150px;
+                    overflow: hidden;
+                    .profile_user-pic {
+                        border-radius: 75px;
+                        border: 4px solid color($colors, primary);
+                        width: 150px;
+                    }
+                }
+                .profile_settings {
+                    height: 56px;
+                    width: 56px;
+                    font-size: 32px;
+                    background-color: color($colors, primary);
+                }
+            }
+        }
+        .profile_header {
+            width: 100%;
+            margin-top: 65px;
+        }
+        .profile_feed {
+            padding-top: 10px;
+            .profile_create-post {
+                .profile_post-input {
+                    background-color: color($colors, main-white);
+                    padding-left: 0px;
+                    .profile_post-textarea {
+                        margin-left: 16px;
+                    }
+                }
+                .profile_button-container {
+                    padding-right: 16px;
+                    .profile_post-icon {
+                        font-size: 20px;
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 20px;
+                        background-color: color($colors, primary);
+                        float: right;
+                        margin-top: -52px;
+                        padding: 0;
+                    }
+                }
+            }
+            .flex-container {
+                &.profile_post-options {
+                    justify-content: space-around;
+                    border-bottom: 1px solid #dedede;
+                    .flex-container {
+                        align-items: center;
+                        .profile_options-icons {
+                            font-size: 25px;
+                            padding-right: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

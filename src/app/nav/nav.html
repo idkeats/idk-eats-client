@@ -1,0 +1,48 @@
+<div class="overlay" [ngClass]="{'overlay--expand': subnavActive}" (click)="subnavActive = !subnavActive"></div>
+<div class="row navigation">
+  <nav class="navigation_columns" [ngClass]="{'navigation_subnav--expand': subnavActive}">
+    <a class="nav_link--block" (click)="navigateTo('home')" [ngClass]="{'active': page === 'home' && !subnavActive}">
+       <img src="{{page === 'home' && !subnavActive ? 'assets/images/feed-active.svg' : 'assets/images/feed.svg'}}" alt="IDK Home Feed">
+    </a>
+    <a class="nav_link--block" (click)="navigateTo('profile')" [ngClass]="{'active': page === 'profile' && !subnavActive}">
+      <ion-icon name="contact"></ion-icon>
+    </a>
+    <a class="nav_link--block" (click)="navigateTo('group')" [ngClass]="{'active': page === 'group' && !subnavActive}">
+      <ion-icon name="git-network"></ion-icon>
+    </a>
+    <a class="nav_link--block" (click)="navigateTo('map')" [ngClass]="{'active': page === 'map' && !subnavActive}">
+      <ion-icon name="compass"></ion-icon>
+    </a>
+    <a class="nav_link--block nav_hamburger" (click)="subnavActive = !subnavActive">
+      <div class="hamburger-line top" [ngClass]="{'open': subnavActive}"></div>
+      <div class="hamburger-line middle" [ngClass]="{'open': subnavActive}"></div>
+      <div class="hamburger-line bottom" [ngClass]="{'open': subnavActive}"></div>
+    </a>
+  </nav>
+  <div class="subnav" [ngClass]="{'subnav--expand': subnavActive}">
+    <button class="subnav_btn subnav_btn--border-right" (click)="logout()">
+      <ion-icon class="subnav_icon" name="log-out"></ion-icon>
+      <p class="subnav_btn-title">{{isLoggedIn ? 'Logout' : 'Login'}}</p> 
+    </button>
+    <button class="subnav_btn" (click)="presentModal()">
+      <ion-icon class="subnav_icon" name="settings"></ion-icon>
+      <p class="subnav_btn-title">Settings</p>
+    </button>
+    <button class="subnav_btn subnav_btn--border-right" (click)="navigateTo('groups')">
+      <ion-icon class="subnav_icon" name="people"></ion-icon>
+      <p class="subnav_btn-title">My Groups</p>
+    </button>
+    <button class="subnav_btn" (click)="navigateTo('preferences')">
+      <ion-icon class="subnav_icon" name="restaurant"></ion-icon>
+      <p class="subnav_btn-title">Preferences</p> 
+    </button>
+    <button class="subnav_btn subnav_btn--border-right" (click)="navigateTo('friends')">
+      <ion-icon class="subnav_icon" name="contacts"></ion-icon>
+      <p class="subnav_btn-title">Friends</p>
+    </button>
+    <button class="subnav_btn" (click)="navigateTo('history')">
+      <ion-icon class="subnav_icon" name="calendar"></ion-icon>
+      <p class="subnav_btn-title">History</p> 
+    </button>
+  </div>
+</div>

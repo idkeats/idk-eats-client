@@ -1,0 +1,17 @@
+.friends {
+    .friends_tabs {
+        .tabbar {
+            opacity: 1;
+            top: 56px !important;
+            max-height: 41px;
+            &::after {
+                background-image: none;
+            }
+        }
+    }
+    .friends_button--caps {
+        text-transform: none;
+        font-size: 14px;
+        padding: 3px 6px;
+    }
+}

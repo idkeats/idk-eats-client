@@ -1,0 +1,89 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// #ion-diagnostics-toast is adding that black line at the top. That needs a fixin'
+
+* {
+    transition: 0.3s;
+}
+
+body {
+    ion-content.content, .form-control {
+        background-color: color($colors, main-white);
+    }
+    .scroll-content.scroll-content.scroll-content.scroll-content.scroll-content {
+        padding: 72px 16px;
+        overflow-y: auto;
+        .card {
+            &.full-width {
+                margin-left: -16px;
+                width: calc(100% + 32px);
+            }
+        }
+    }
+    .full-height {
+        height: 100%;
+    }
+    .full-width {
+        width: 100%;
+    }
+    .flex-container {
+        display: flex;
+        &.center {
+            justify-content: center;
+            align-items: center;
+        }
+        &.center-between {
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    button, button.sub_nav {
+        &:focus {
+            outline: none;
+        }
+    }
+    .border-bottom--red {
+        border-bottom: 4px solid color($colors, main-red);
+    }
+    .top--margin-none {
+        margin-top: 0;
+    }
+    .bottom--margin-none {
+        margin-bottom: 0;
+    }
+    .margin--zero {
+        margin: 0;
+    }
+    .padding--zero {
+        padding: 0;
+    }
+    .padding--right-zero {
+        padding-right: 0;
+    }
+    .padding--left-zero {
+        padding-left: 0;
+    }
+    .float-left {
+        float: left;
+    }
+    .float-right {
+        float: right;
+    }
+    .clear-both {
+        clear: both;
+    }
+}

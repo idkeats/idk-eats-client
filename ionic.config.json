@@ -1,0 +1,12 @@
+{
+  "name": "idk-eats",
+  "app_id": "",
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://maps.googleapis.com/maps/api"
+    }
+  ]
+}
+

@@ -1,0 +1,20 @@
+.home-feed {
+    .home-feed_post {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    .toggle-button {
+        position: fixed;
+        top: 57px;
+        right: 15px;
+        z-index: 1000;
+    }
+
+    ion-icon {
+        color: #ccc;
+
+        &.liked {
+            color: #007d87;
+        }
+    }
+}

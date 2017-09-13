@@ -1,0 +1,18 @@
+
+
+.registration {
+    .swiper-container {
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        .slide-zoom {
+            height: 100%;
+            padding: 25px 0px;
+        }
+
+        .swiper-pagination {
+            position: fixed;
+            bottom: 70px;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<div class="friends full-height">
+    <app-header></app-header>
+    <ion-content>
+        <ion-tabs class="tabs friends_tabs" tabsPlacement="top" tabsLayot="icon-top">
+            <ion-tab [root]="friendsList" 
+                tabTitle="Friends" 
+                (click)="navigateTabs(0)"></ion-tab>
+            <ion-tab [root]="suggestions" 
+                tabTitle="Suggestions"
+                (click)="navigateTabs(1)">Suggestions</ion-tab>
+            <ion-tab [root]="search" 
+                tabTitle="Search"
+                (click)="navigateTabs(2)">Search</ion-tab>
+            <ion-tab [root]="requests" 
+                tabTitle="Requests"
+                (click)="navigateTabs(3)">Requests</ion-tab>
+        </ion-tabs>
+    </ion-content>
+    <app-nav></app-nav>
+</div>

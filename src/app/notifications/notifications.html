@@ -1,0 +1,45 @@
+
+<div class="settings full-height">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>
+                Notifications
+            </ion-title>
+            <ion-buttons start>
+                <button ion-button (click)="dismiss()">
+                    <span ion-text color="primary" showWhen="ios">Cancel</span>
+                    <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+                </button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list *ngIf="myUser">
+            <div class="row" *ngFor="let notification of myUser.notifications">
+                <div class="col-3 padding--zero">
+                    <img src="{{notification.image}}" alt="Notification image">
+                </div>
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-9 padding--right-zero">
+                            <p class="top--margin-none"><b>{{notification.name}}</b> {{notification.message}}</p>
+                        </div>
+                        <div class="col-3 padding--zero text-center">
+                            <p class="history_date">{{notification.date}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button ion-button>Accept</button>
+                            <button ion-button>Decline</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ion-item *ngIf="!myUser.notifications || !myUser.notifications.length">
+                <h2>No current notifications</h2>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</div>

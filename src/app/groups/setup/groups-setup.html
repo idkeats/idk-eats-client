@@ -1,0 +1,61 @@
+<div class="group full-height">
+    <app-header></app-header>
+    <ion-content>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8">
+                    <h1 class="main-header">New Group</h1>
+                </div>
+                <div class="col-4 flex-container">
+                    <ion-icon class="group_nav-icon" 
+                        name="compass"
+                        (click)="openLocationModal()"></ion-icon>
+                </div>
+            </div>
+            <!-- <h2>Invite your friends</h2> -->
+            <div class="row">
+                <div class="col-12">
+                    <input type="text" 
+                        class="form-control group--font-size"
+                        placeholder="Search for friends..."
+                        [(ngModel)]="filter"
+                        (keyup)="filterFriends($event.target.value)">
+                    <ul class="group_list">
+                        <li class="item group--font-size"
+                          *ngFor="let friend of friendsCopy"
+                          [ngClass]="{'invited': friend.invited}">
+                            <div class="group_profile-pic">
+                                <img src="{{friend.picture}}" alt="{{friend.name}} profile picture">
+                            </div>
+                            {{friend.name}}
+                            <ion-icon name="remove-circle"
+                                class="remove-circle"
+                                *ngIf="friend.invited"
+                                (click)="removeInvite(friend)"></ion-icon>
+                            <ion-icon name="add-circle" 
+                                      class="add-circle" 
+                                      (click)="inviteFriend(friend)"
+                                      *ngIf="!friend.invited"></ion-icon>
+                        </li>
+                    </ul>
+                    <div class="group_bank">
+                        <h4>
+                            Group
+                        </h4> 
+                        <div class="group_bank group_bank--padding-left">
+                            <div class="invited group--font-size"
+                            *ngFor="let invited of invitedFriends">
+                                <img src="{{invited.picture}}" alt="{{invited.name}} profile picture" class="group_profile-pic">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center group_start-btn-container">
+                    <button class="btn btn-lg start-button group--font-size"
+                    (click)="startGroup()">Start Group</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <app-nav [page]="'group'"></app-nav>
+</div>

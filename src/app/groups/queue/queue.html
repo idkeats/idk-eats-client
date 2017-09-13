@@ -1,0 +1,180 @@
+<div class="queue full-height">
+    <app-header></app-header>
+        <div class="container-fluid">
+            <div class="row queue_map">
+                <div class="col-12 map-container">
+                    <agm-map *ngIf="currentLocation"
+                             [latitude]="currentLocation?.latitude" 
+                             [longitude]="currentLocation?.longitude" 
+                             [zoom]="zoom"
+                             [ngClass]="{'show-map': !queueStarted, 'hide-map': queueStarted}">
+                        <map-extension (mapReady)="saveMapInstance($event)"></map-extension>
+                        <agm-marker [latitude]="currentLocation?.latitude" 
+                                    [longitude]="currentLocation?.longitude"></agm-marker>
+                    </agm-map>
+                    <button class="queue_button" *ngIf="!queueStarted" (click)="openChat()" ion-button round>
+                        <ion-icon name="chatbubbles"></ion-icon>
+                    </button>
+                    <button class="queue_directions" ion-button small
+                        *ngIf="selectedRestaurant && queueStarted"
+                        (click)="getDirections(selectedRestaurant.formatted_address)">Directions</button>
+                    <agm-map [latitude]="selectedRestaurant?.latitude" 
+                             [longitude]="selectedRestaurant?.longitude" 
+                             [zoom]="zoom"
+                             [ngClass]="{'show-map': queueStarted, 'hide-map': !queueStarted}">
+                        <map-extension (mapReady)="saveMapInstance($event)"></map-extension>
+                        <agm-marker [latitude]="selectedRestaurant?.latitude"
+                                    [longitude]="selectedRestaurant?.longitude"></agm-marker>
+                    </agm-map>
+                </div>
+                <div #map></div>
+            </div>
+            <div class="row restaurant-info-container">
+                <div class="col-12 restaurant-info">
+                    <div class="col-12" *ngIf="!queueStarted">
+                        <h2>Welcome to group Captain Planet's And His Lame Ass Sidekicks!</h2>
+                        <h5>Currently awaiting all members to accept the invitation.</h5>
+                    </div>
+                    <div *ngIf="queueStarted && selectedRestaurant">
+                        <div class="queue_menu--ios">
+                            <ion-segment [(ngModel)]="info">
+                                <ion-segment-button value="general">
+                                    General
+                                </ion-segment-button>
+                                <ion-segment-button value="hours">
+                                    Hours
+                                </ion-segment-button>
+                                <ion-segment-button value="images">
+                                    Images
+                                </ion-segment-button>
+                            </ion-segment>
+                        </div>
+                            
+                        <div [ngSwitch]="info">
+                            <ion-list *ngSwitchCase="'general'">
+                                <ion-item class="queue_info-container">
+                                    <div class="flex-container center-between">
+                                        <h3 class="restaurant-name queue_info-item queue_info-item--margin">
+                                            {{selectedRestaurant.name}}
+                                        </h3>
+                                        <div class="col-3"
+                                            *ngIf="selectedRestaurant.price_level">
+                                            <div *ngIf="selectedRestaurant.price_level === 1" class="queue_info-item queue_info-item--margin flex-container">
+                                                <img src="assets/images/currency-usd.svg" alt="Dollar sign">
+                                            </div>
+                                            <div *ngIf="selectedRestaurant.price_level === 2" class="queue_info-item queue_info-item--margin flex-container">
+                                                <img src="assets/images/currency-usd.svg" alt="Dollar sign">
+                                                <img src="assets/images/currency-usd.svg" alt="Dollar sign">
+                                            </div>
+                                            <div *ngIf="selectedRestaurant.price_level === 3" class="queue_info-item queue_info-item--margin flex-container">
+                                                <img src="assets/images/currency-usd.svg" alt="Dollar sign">
+                                                <img src="assets/images/currency-usd.svg" alt="Dollar sign">
+                                                <img src="assets/images/currency-usd.svg" alt="Dollar sign">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="selectedRestaurant.formatted_address">
+                                        <p class="queue_info-item queue_info-item--margin">{{selectedRestaurant.formatted_address}}</p>
+                                    </div>
+                                    <div *ngIf="selectedRestaurant.formatted_phone_number">
+                                        <a id="phone-number" href="">
+                                            <p class="queue_info-item queue_info-item--margin">
+                                                {{selectedRestaurant.formatted_phone_number}}
+                                            </p>
+                                        </a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 flex-container queue_rating-container"
+                                            *ngIf="selectedRestaurant.rating">
+                                            <div class="queue_rating">
+                                                <div class="queue_star" [ngStyle]="{'width': rating + '%'}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 queue_info-item queue_info-item--margin text-right" *ngIf="selectedRestaurant.distance">
+                                            <p class="queue_info-item queue_info-item--margin">{{selectedRestaurant.distance}}&nbsp;miles</p>
+                                        </div>
+                                    </div>
+                                </ion-item>
+                            </ion-list>
+                            
+                            <ion-list *ngSwitchCase="'hours'">
+                                <ion-item class="queue_info-container hours-container">
+                                    <div class="row"
+                                        *ngIf="selectedRestaurant.opening_hours && selectedRestaurant.opening_hours.weekday_text">
+                                        <div class="col-12 queue_item--padding"
+                                            *ngFor="let weekday of selectedRestaurant.opening_hours.weekday_text">
+                                            <div *ngIf="weekday.includes(',')">
+                                                <p class="queue_info-item queue_info-item--margin">{{weekday.split(', ')[0]}}</p>
+                                                <p class="queue_info-item queue_info-item--margin margin-left-9">{{weekday.split(', ')[1]}}</p>
+                                            </div>
+                                            <div *ngIf="!weekday.includes(',')">
+                                                <p class="queue_info-item queue_info-item--margin">{{weekday}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ion-item>
+                            </ion-list>
+
+                            <ion-list *ngSwitchCase="'images'"
+                                class="images-container">
+                                <ion-row>
+                                    <ion-item class="queue_info-container">
+                                        <ion-scroll scrollX="true">
+                                            <!-- <ion-avatar> -->
+                                                <img src="{{photo.url}}" 
+                                                    *ngFor="let photo of photos" 
+                                                    class="scroll-item"/>
+                                                <!--{{morePictures}}-->
+                                                <!--<ion-infinite-scroll *ngIf="morePictures"
+                                                            (ionInfinite)="getMorePictures($event)">
+                                                    <ion-infinite-scroll-content loadingSpinner="bubbles"
+                                                                                loadingText="Loading more images..."></ion-infinite-scroll-content>
+                                                </ion-infinite-scroll>-->
+                                            <!-- </ion-avatar> -->
+                                        </ion-scroll>
+                                    </ion-item>
+                                </ion-row>
+                            </ion-list>
+                        </div>
+                    </div>
+                    <div class="pictures-container">
+                        <img src="{{myUser.picture}}"
+                            *ngIf="myUser"
+                            alt="User"
+                            class="user-picture">
+                        <img *ngFor="let friend of invitedFriends" 
+                            src="{{friend.picture}}" 
+                            alt="Person" 
+                            class="members-picture">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 no-padding">
+                    <div class="action-bar">
+                        <div class="queue_button-container" *ngIf="queueStarted">
+                            <button class="queue_button" ion-button round
+                                    (click)="likeSelection()">
+                                <ion-icon name="thumbs-up"></ion-icon>
+                            </button>
+                            <ion-badge *ngIf="voteCount !== 0">{{ voteCount }}</ion-badge>
+                        </div>
+                        <div class="queue_button-container" *ngIf="queueStarted">
+                            <button class="queue_button" ion-button round
+                                    (click)="dislikeSelection()">
+                                <ion-icon name="thumbs-down"></ion-icon>
+                            </button>
+                            <ion-badge *ngIf="downvoteCount !== 0">{{ downvoteCount }}</ion-badge>
+                        </div>
+                        <button class="queue_button" *ngIf="queueStarted" (click)="openChat()" ion-button round>
+                            <ion-icon name="chatbubbles"></ion-icon>
+                        </button>
+                        <button class="btn btn-success go-button"
+                                (click)="startQueue()"
+                                *ngIf="!queueStarted && altRestaurants.length">Let's Eat!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <app-nav></app-nav>
+</div>

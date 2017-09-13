@@ -1,0 +1,85 @@
+<div class="map full-height">
+  <app-header></app-header>
+  <ion-content padding>
+    <div class="map_google">
+      <agm-map *ngIf="currentLocation" [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude" [zoom]="zoom">
+        <map-extension (mapReady)="saveMapInstance($event)"></map-extension>
+        <agm-marker [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude"></agm-marker>
+      </agm-map>
+      <div #map></div>
+      <div *ngIf="!displayRestInfo && restaurants?.length > 0"
+           class="row map_list-container-header">
+        <div class="col-10">
+          <h3>Restaurants around you</h3>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-primary map_icons" 
+                  *ngIf="!search" 
+                  (click)="enableSearch($event)">
+            <ion-icon name="search"></ion-icon>
+          </button>
+          <button class="btn btn-primary map_icons" 
+                  *ngIf="search" 
+                  (click)="disableSearch($event)">
+            <ion-icon name="list"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!displayRestInfo && restaurants?.length > 0"
+         class="map_list-container">
+      <div *ngIf="search">
+        <div class="row flex-align-center">
+          <div class="col-10">
+            <ion-item>
+              <ion-input type="text" 
+                         placeholder="Search For"
+                         id="search"
+                         [(ngModel)]="searchFor"></ion-input>
+            </ion-item>
+          </div>
+          <div class="col-2">
+            <label for=""></label>
+            <button class="btn btn-primary" (click)="searchTerms($event)">
+              <ion-icon name="search"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ion-list no-lines>
+          <ion-item *ngFor="let restaurant of restaurants"
+                    (click)="setDisplayRest(restaurant, true)">
+              <ion-avatar item-left>
+                  <ion-icon name="pin"></ion-icon>
+              </ion-avatar>
+              <h2>{{restaurant.name}}</h2>
+              <p>{{restaurant.distance}} miles</p>
+          </ion-item>
+      </ion-list>
+      <ion-infinite-scroll *ngIf="moreRestaurantsToken"
+                          (ionInfinite)="getMoreRestaurants($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles"
+                                      loadingText="Loading more restaurants..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+    <div class="map_selected-restaurant" 
+        *ngIf="displayRestInfo && displayRest">
+      <div class="row">
+        <div class="col-10">
+          <h3>{{displayRest.name}}</h3>
+        </div>
+        <div class="col-2">
+          <button (click)="toggleToListView($event)">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#000000" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p>{{displayRest.vicinity}}</p>
+      <p *ngIf="displayRest?.rating">Rating:&nbsp;{{displayRest.rating}}/5.0</p>
+      <p *ngIf="displayRest?.opening_hours">{{displayRest.opening_hours?.open_now ? 'Open Now' : 'Closed'}}</p>
+    </div>
+    <app-nav [page]="'map'"></app-nav>
+  </ion-content>
+</div>

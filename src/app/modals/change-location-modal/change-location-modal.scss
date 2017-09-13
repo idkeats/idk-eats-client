@@ -1,0 +1,12 @@
+.location_input {
+    width: 100%;
+    border-bottom: 1px solid color($colors, main-gray);
+    &.location_input--flex-end {
+        align-self: flex-end;
+        .location_input-item {
+            .item-inner {
+                border-bottom: 0px solid transparent;
+            }
+        }
+    }
+}

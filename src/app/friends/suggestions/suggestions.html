@@ -1,0 +1,24 @@
+<div class="suggestions full-height">
+    <ion-content>
+        <ion-list>
+            <ion-item *ngFor="let user of users">
+                <ion-avatar item-start>
+                <img [src]="user.pic">
+                </ion-avatar>
+                <h2>{{user.name}}</h2>
+                <p>Ugh. As if.</p>
+                <ion-note item-end>
+                    <button class="friends_button--caps" ion-button clear
+                        (click)="requestFriend(user)">
+                        Request
+                    </button>
+
+                    <button class="friends_button--caps" ion-button clear
+                        (click)="removeSuggestion(user)">
+                        Hard Pass
+                    </button>
+                </ion-note>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</div>

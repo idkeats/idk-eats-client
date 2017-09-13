@@ -1,0 +1,32 @@
+.top_nav {
+    max-height: 56px;
+    background-color: color($colors, light-red);
+    padding: 0;
+    box-shadow: 0 0px 8px rgba(51, 51, 51, 0.5);
+    z-index: 1001;
+    .toolbar-background {
+        display: none;
+    }
+    .top_nav--flex-apart {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 11px;
+        .idk-logo {
+            .idk-logo--size {
+                height: 70px;
+            }
+        }
+        .top_nav--btn {
+            background-color: transparent;
+            color: color($colors, main-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0 8px;
+            .icon {
+                height: 26px;
+            }
+        }
+    }
+}

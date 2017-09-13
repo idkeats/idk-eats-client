@@ -1,0 +1,54 @@
+.preferences {
+    .preferences_header {
+        padding: 15px 0px;
+        h1 {
+            margin: 0px;
+        }
+        .preferences_menu {
+            font-size: 25px;
+        }
+    }
+
+    .preferences_item-grow {
+        flex-grow: 1;
+        .flex-container {
+            &.center-between {
+                min-width: 150px;
+                .icon {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
+    .pref-container {
+        height: 0px;
+        visibility: hidden;
+    }
+    
+    .edit-button {
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        transition: all 1s;
+    }
+
+    .add-icon {
+        font-size: 32px;
+        color: #449d44;
+    }
+    .preferences_save-container {
+        position: fixed;
+        right: 0;
+        bottom: 56px;
+        left: 0;
+        background-color: color($colors, main-white);
+        text-align: center;
+        padding: 10px;
+        .btn {
+            font-size: 20px;
+            background-color: color($colors, primary);
+            color: color($colors, main-white);
+        }
+    }
+}

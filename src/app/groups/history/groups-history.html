@@ -1,0 +1,61 @@
+<div class="groups full-height">
+    <app-header></app-header>
+    <ion-content>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 list_container">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2>Group History</h2>
+                        </div>
+                        <div class="col-5">
+                            <button ion-button 
+                                icon-right 
+                                class="btn btn-sm new_group padding--zero"
+                                (click)="createNewGroup()" 
+                                clear>
+                                New Group
+                                <ion-icon name="add-circle" class="new_group-icon"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list">
+                        <ion-card *ngFor="let group of groups" class="item">
+                            <ion-card-content class="groups_info">
+                                <div class="groups_info-header">
+                                    <h3>{{group.name ? group.name : group.restaurant}}</h3>
+                                    <button class="groups_info-button" ion-button icon-left clear large>
+                                        <ion-icon name="more"></ion-icon>
+                                    </button>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="groups_members">
+                                        <img src="./assets/images/rm-user.jpg" alt="Profile Picture" class="groups_members-pic">
+                                    </div>
+                                    <div class="groups_members">
+                                        <img src="./assets/images/rm-user.jpg" alt="Profile Picture" class="groups_members-pic">
+                                    </div>
+                                    <div class="groups_members">
+                                        <img src="./assets/images/rm-user.jpg" alt="Profile Picture" class="groups_members-pic">
+                                    </div>
+                                    <div class="groups_members">
+                                        <img src="./assets/images/rm-user.jpg" alt="Profile Picture" class="groups_members-pic">
+                                    </div>
+                                    <div class="groups_members">
+                                        <img src="./assets/images/rm-user.jpg" alt="Profile Picture" class="groups_members-pic">
+                                    </div>
+                                </div>
+                            </ion-card-content>
+                            <!-- <ion-row> -->
+                                <ion-item right text-right>
+                                    <ion-note>{{group.date}}</ion-note>
+                                </ion-item>
+                            <!-- </ion-row> -->
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <app-nav [page]="'groups'"></app-nav>
+</div>

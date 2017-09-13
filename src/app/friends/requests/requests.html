@@ -1,0 +1,28 @@
+<div class="requests full-height">
+    <ion-content>
+        <ion-list *ngIf="myUser">
+            <ion-item *ngFor="let request of myUser.my_friend_requests">
+                <ion-avatar item-start>
+                    <img *ngIf="request.owner.pic" [src]="request.owner.pic">
+                    <img *ngIf="!request.owner.pic" src="../../../../assets/images/profile-pic.png">
+                </ion-avatar>
+                <h2>{{request.owner.name}}</h2>
+                <p>Ugh. As if.</p>
+                <ion-note item-end>
+                    <button class="friends_button--caps" ion-button clear
+                        (click)="declineRequest(request.id)">
+                        Decline
+                    </button>
+                    <button class="friends_button--caps" ion-button clear
+                        (click)="acceptRequest(request)">
+                        Accept
+                    </button>
+                </ion-note>
+            </ion-item>
+            <ion-item *ngIf="!myUser?.my_friend_requests?.length">
+                <h2>No pending friend requests.</h2>
+                <p>#foreveralone</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</div>

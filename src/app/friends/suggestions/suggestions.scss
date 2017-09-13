@@ -1,0 +1,9 @@
+.suggestions {
+    h1 {
+        color: color($colors, dark);
+    }
+    .suggestion_button {
+        text-transform: none;
+        font-size: 14px;
+    }
+}

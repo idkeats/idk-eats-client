@@ -1,0 +1,17 @@
+.friends-list {
+    h1 {
+        color: gold;
+    }
+    .friends_message {
+        overflow: auto;
+        white-space: normal;
+        .label {
+            overflow: auto;
+            white-space: normal;
+            .friends_search-link {
+                color: color($colors, main-red);
+                font-weight: 600;
+            }
+        }
+    }
+}

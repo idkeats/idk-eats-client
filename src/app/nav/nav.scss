@@ -1,0 +1,152 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    background-color: transparent;
+    &.overlay--expand {
+        bottom: 0;
+        z-index: 1000;
+        background-color: rgba(51, 51, 51, 0.5)
+    }
+}
+
+.navigation {
+    background-color: white;
+    position: fixed;
+    bottom: -1px;
+    right: 0;
+    left: 0;
+    z-index: 1001;
+    margin: 0;
+    
+    .navigation_columns {
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        box-shadow: 0 0px 5px rgba(51, 51, 51, 0.8);
+        z-index: 2;
+        .nav_link--block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 56px;
+            width: 24%;
+            padding: 0px 5px;
+            .icon {
+                font-size: 42px;
+                color: #9b9b9b;
+            }
+            &.active {
+                .icon {
+                    // color: rgb(254,32,32);
+                    background: -moz-linear-gradient(left, rgba(254,32,32,1) 0%, rgba(255,78,74,1) 100%);
+                    background: -webkit-linear-gradient(left, rgba(254,32,32,1) 0%,rgba(255,78,74,1) 100%);
+                    background: linear-gradient(to right, rgba(254,32,32,1) 0%,rgba(255,78,74,1) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe2020', endColorstr='#ff4e4a',GradientType=1 );
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    &:before {
+                        background: -moz-linear-gradient(left, rgba(254,32,32,1) 0%, rgba(255,78,74,1) 100%);
+                        background: -webkit-linear-gradient(left, rgba(254,32,32,1) 0%,rgba(255,78,74,1) 100%);
+                        background: linear-gradient(to right, rgba(254,32,32,1) 0%,rgba(255,78,74,1) 100%);
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+            }
+            &.nav_link--more-padding {
+                padding: 0px 10px;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+            img {
+                height: 30px;
+                &.nav_logo--size {
+                    height: 36px;
+                }
+            }
+            &.nav_hamburger {
+                flex-direction: column;
+                align-items: center;
+                .hamburger-line {
+                    background-color: #9b9b9b;
+                    height: 3px;
+                    width: 30px;
+                    margin-bottom: 5px;
+                    border-radius: 2px;
+                    &.bottom {
+                        margin-bottom: 0px;
+                    }
+                    &.open {
+                        background: rgb(254,32,32);
+                        background: -moz-linear-gradient(left, rgba(254,32,32,1) 0%, rgba(255,78,74,1) 100%);
+                        background: -webkit-linear-gradient(left, rgba(254,32,32,1) 0%,rgba(255,78,74,1) 100%);
+                        background: linear-gradient(to right, rgba(254,32,32,1) 0%,rgba(255,78,74,1) 100%);
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe2020', endColorstr='#ff4e4a',GradientType=1 );
+                        position: absolute;
+                        &.top {
+                            display: none;
+                        }
+                        &.middle {
+                            transform: rotate3d(0, 0, 1, 45deg);
+                        }
+                        &.bottom {
+                            transform: rotate3d(0, 0, 1, -45deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .subnav {
+        height: 0px;
+        width: 100%;
+        padding: 0px;
+        visibility: hidden;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        z-index: 1;
+        &.subnav--expand {
+            height: 100%;
+            width: 100%;
+            visibility: visible;
+            padding: 0px;
+            z-index: 1;
+            .subnav_btn {
+                height: 115px;
+                width: 50%;
+                padding: 15px;
+                border-bottom: 1px solid lightgray;
+                &.subnav_btn--border-right {
+                    border-right: 1px solid lightgray;
+                }
+            }
+        }
+        .subnav_btn {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 0px;
+            width: 50%;
+            padding: 0px;
+            .subnav_icon {
+                font-size: 32px;
+            }
+            .subnav_btn-title {
+                font-size: 18px;
+                margin: 0;
+            }
+        }
+    }
+}

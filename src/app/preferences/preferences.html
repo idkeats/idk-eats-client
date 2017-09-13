@@ -1,0 +1,97 @@
+<div class="full-height">
+  <app-header></app-header>
+  <ion-content padding (options)="handleOptions($event)">
+    <div class="preferences">
+      <div class="preferences_header flex-container center-between">
+        <h1>Food Preference List</h1>
+        <button ion-button icon-only 
+                (click)="presentPopover()" 
+                (options)="option = $event">
+          <ion-icon name="more"></ion-icon>
+        </button>
+        <!-- <ion-icon name="more" class="preferences_menu" (click)="presentPopover()" (options)="edit = $event"></ion-icon> -->
+      </div>
+      <p *ngIf="option === 'edit'">Drag and drop the preferences in the order that best suits you!</p>
+      <div class="flex-container" 
+           *ngIf="option === 'edit'" 
+           sortablejs 
+           [sortablejsOptions]="options" 
+           class="row ">
+        <div class="preferences_item-grow" 
+             *ngFor="let preference of scopedPreferences; let i = index;">
+          <ion-card>
+              <ion-card-content class="flex-container center-between">
+                {{i+1}}. {{preference.display_name ? preference.display_name : preference.preference_name | titlecase}} 
+                <ion-icon name="move" 
+                          *ngIf="option === 'edit'"></ion-icon>
+              </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+      <div class="flex-container" 
+           *ngIf="option !== 'edit'" 
+           class="row">
+        <div class="col-6 flex-container center">
+          <button ion-button
+                  (click)="showPrefSelect(showPreferenceDropdown)" clear>
+            {{showPreferenceDropdown ? 'Cancel' : 'Add More'}}&nbsp; 
+            <ion-icon ios="ios-add-circle" md="md-add-circle" 
+                      *ngIf="!showPreferenceDropdown"></ion-icon>
+            <ion-icon ios="ios-close" md="md-close" 
+                      *ngIf="showPreferenceDropdown"></ion-icon>
+          </button>
+        </div>
+        <div class="preferences_item-grow" 
+             *ngFor="let preference of scopedPreferences; let i = index;">
+          <ion-card>
+              <ion-card-content class="flex-container center-between">
+                {{i+1}}. {{preference.display_name ? preference.display_name : preference.preference_name | titlecase}} 
+                <ion-icon name="add" 
+                          *ngIf="option === 'add'"></ion-icon>
+                <ion-icon name="remove" 
+                          *ngIf="option === 'remove'" 
+                          (click)="removePreference(preference)"></ion-icon>
+              </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="preferences_save-container" *ngIf="showPreferenceDropdown">
+          <button class="btn btn-lg waves-effect waves-light"
+                (click)="savePreferences()">Save Preferences</button>
+        </div>
+        <div class="col-8 pref-container">
+          <ion-list>
+            <ion-item>
+              <ion-label>Preferences</ion-label>
+              <ion-select [ngModel]="addedPrefs" 
+                          (ngModelChange)="addedPrefs = $event;addPreferences($event);" 
+                          multiple="true" 
+                          #prefSelect>
+                  <ion-option *ngFor="let preference of allPreferences"
+                      [value]="{preference_id: preference.id, preference_name: preference.name, user_id: myUser.id}">{{preference.display_name}}
+                  </ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+  <app-nav></app-nav>
+</div>
+

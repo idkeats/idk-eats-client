@@ -1,0 +1,78 @@
+<div class="profile full-height">
+    <app-header></app-header>
+    <ion-content>
+        <div class="row profile_content" *ngIf="currentUser">
+            <div class="profile_cover">
+                <img class="profile_cover-img" src="./assets/images/idk-plaid.png" alt="Profile cover photo">
+            </div>
+            <div class="flex-container profile_menu">
+                <button (click)="navigateToPreferences()" class="profile_settings" ion-button round [disabled]="myUser.id !== currentUser.id"><ion-icon class="profile_menu-icon" name="restaurant"></ion-icon></button>
+                <div class="profile_pic">
+                    <img class="profile_user-pic" [src]="currentUser.pic" alt="Profile picture">
+                </div>
+                <button (click)="presentModal()" class="profile_settings" ion-button round><ion-icon class="profile_menu-icon" name="settings"></ion-icon></button>
+            </div>
+            <div class="profile_header text-center">
+                <h2 class="profile_user-name">{{currentUser.name}}</h2>
+            </div>
+            <div class="profile_feed">
+                <ion-list class="profile_create-post">
+                    <ion-item class="profile_post-input">
+                        <ion-textarea class="profile_post-textarea" type="text" placeholder="What's on your mind?"></ion-textarea>
+                    </ion-item>
+                    <div class="profile_button-container">
+                        <button (click)="post()" class="profile_post-icon" ion-button round><ion-icon class="profile_menu-icon" name="send"></ion-icon></button>
+                    </div>
+                    <ul class="nav flex-container profile_post-options">
+                        <li class="nav-item">
+                            <a class="nav-link flex-container" href="#"><ion-icon class="profile_options-icons" name="camera"></ion-icon> Add Image</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link flex-container" href="#"><ion-icon class="profile_options-icons" name="compass"></ion-icon> Check In</a>
+                        </li>
+                    </ul>
+                </ion-list>
+                <ion-card>
+                    <ion-item>
+                        <ion-avatar item-start>
+                            <img src="./assets/images/rm-user.jpg">
+                        </ion-avatar>
+                        <h2>Marty McFly</h2>
+                        <p>November 5, 1955</p>
+                    </ion-item>
+
+                    <img src="./assets/images/ns-user.jpg">
+
+                    <ion-card-content>
+                        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+                    </ion-card-content>
+
+                    <ion-row>
+                        <ion-col center text-center>
+                            <ion-note>
+                                11h ago
+                            </ion-note>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col text-center>
+                            <button ion-button icon-left clear small>
+                                <ion-icon name="thumbs-up"></ion-icon>
+                                <div>12 Likes</div>
+                            </button>
+                        </ion-col>
+                        <ion-col text-center>
+                            <button ion-button icon-left clear small>
+                                <ion-icon name="text"></ion-icon>
+                                <div>4 Comments</div>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-card>
+            </div>
+        </div>
+    </ion-content>
+    <app-nav [page]="'profile'"></app-nav>
+</div>

@@ -1,0 +1,13 @@
+<div class="preferences-popover">
+    <ion-list radio-group class="popover-page">
+        <ion-item class="text-athelas" (click)="editPreferences('edit')">
+            <p>Reorder</p>
+        </ion-item>
+        <ion-item class="text-athelas" (click)="editPreferences('remove')">
+            <p>Remove Some Preferences</p>
+        </ion-item>
+    </ion-list>
+    <div class="full-width text-right preferences-popover_button-wrapper">
+        <button class="preferences-popover_button" ion-button (click)="close()">Cancel</button>
+    </div>
+</div>

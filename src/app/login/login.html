@@ -1,0 +1,68 @@
+<ion-header class="top_nav login-header">
+    <div class="container">
+      <ion-row class="top_nav--flex-apart">
+          <a class="idk-logo" (click)="navigateTo('home')">
+            <img class="idk-logo--size" src="./assets/images/idk-plaid-logo.png" alt="IDK Home Feed">
+          </a>
+      </ion-row>
+    </div>
+</ion-header>
+
+<ion-content padding>
+  <div class="login">
+    <div class="row login_row login_row--background-white">
+      <form (submit)="$event.preventDefault(); login(email, password)" class="login_form">
+        <ion-list class="form_list">
+
+          <ion-item class="input-field login_form-column">
+            <ion-label floating>Email</ion-label>
+            <ion-input id="email"
+                       name="email"
+                       type="text" 
+                       class="validate"
+                       [(ngModel)]="email"></ion-input>
+          </ion-item>
+
+          <ion-item class="input-field login_form-column margin--zero">
+            <ion-label floating>Password</ion-label>
+            <ion-input id="password"
+                       name="password"
+                       type="password" 
+                       class="validate"
+                       [(ngModel)]="password"></ion-input>
+          </ion-item>
+          <div class="row login_form-column">
+            <ion-item class="col-6 input-field login_form--no-underline padding--zero">
+              <ion-label class="login_form-label--small">Remember me</ion-label>
+              <ion-checkbox checked="false"></ion-checkbox>
+            </ion-item>
+            <ion-item class="col-6 text-right login_form--no-underline">
+              <ion-label class="login_form-label--small">
+                <a href="#">Forgot Password?</a>
+              </ion-label>
+            </ion-item>
+          </div>
+          <p class="danger-text" *ngIf="error">Invalid email or password. Please verify and retry.</p>
+          <div class="col-12 login_button--flex">
+            <button ion-button class="btn login_button" type="submit" outline>
+              Login
+            </button>
+          </div>
+          <p class="login_register">Not yet a member? <span class="login_register-link" (click)="navigateTo('register')">Click here to register!</span></p>
+
+        </ion-list>
+      </form>
+    </div>
+    <!-- TODO Connect login ability to social media -->
+    <!-- <div class="flex-container center">
+      <hr class="full-width">
+      <h3 class="login_or">OR</h3>
+      <hr class="full-width">
+    </div>
+    <div class="login_social">
+      <button ion-button block><i class="fa fa-facebook"></i> Login with Facebook</button>
+      <button ion-button block><i class="fa fa-twitter"></i> Login with Twitter</button>
+      <button ion-button block><i class="fa fa-gmail"></i> Login with Gmail</button>
+    </div> -->
+  </div>
+</ion-content>

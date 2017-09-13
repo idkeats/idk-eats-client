@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div class="registration full-height">
+    <ion-content padding #scrollRef>
+        <ion-slides pager>
+
+            <ion-slide>
+                <h1>Registration</h1>
+                <form (submit)="register()">
+                    <ion-list>
+
+                        <ion-item>
+                            <ion-label floating>Full Name</ion-label>
+                            <ion-input type="text"
+                                    name="name"
+                                    clearInput
+                                    [(ngModel)]="user.name"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label floating>Email</ion-label>
+                            <ion-input type="text"
+                                    name="email"
+                                    clearInput
+                                    [(ngModel)]="user.email"></ion-input>
+                        </ion-item>
+                        
+                        <ion-item>
+                            <ion-label floating>Zipcode</ion-label>
+                            <ion-input type="text"
+                                    name="zip"
+                                    clearInput
+                                    [(ngModel)]="user.zip"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label floating>Password</ion-label>
+                            <ion-input type="password"
+                                    name="password"
+                                    (ionBlur)="user.password = $event.value"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label floating>Confirm Password</ion-label>
+                            <ion-input type="password"
+                                    (ionBlur)="user.passwordConfirm = $event.value"
+                                    name="confirm"></ion-input>
+                        </ion-item>
+
+                    </ion-list>
+                    <button ion-button
+                        type="submit"
+                        [disabled]="user.password !== user.passwordConfirm">
+                            Register
+                    </button>
+                </form>
+            </ion-slide>
+
+            <ion-slide>
+                <h1>Preferences</h1>
+                <ion-list *ngIf="myUser">
+
+                    <h4>What makes your mouth water?</h4>
+                    <ion-item>
+                        <ion-label>Preferences</ion-label>
+                        <ion-select [(ngModel)]="userPreferences" multiple="true">
+                            <ion-option *ngFor="let preference of allPreferences" 
+                                [value]="{preference_id: preference.id, preference_name: preference.name, user_id: myUser.id}">{{preference.display_name}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <button class="btn btn-success waves-effect waves-light"
+                        (click)="savePreferences(userPreferences)">Save Preferences</button>
+
+                    <ion-item>
+                        <ion-textarea placeholder="Do you have any allergies?"></ion-textarea>
+                    </ion-item>
+
+                </ion-list>
+            </ion-slide>
+        </ion-slides>
+    </ion-content>
+</div>
+<app-nav></app-nav>

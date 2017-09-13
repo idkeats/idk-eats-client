@@ -1,0 +1,97 @@
+
+// color-scheme is being imported in app.less, which allows us to call it's color variables
+
+// All less is nested identically to html
+
+.login-header {
+    overflow: hidden;
+    .container {
+        .top_nav--flex-apart {
+            .idk-logo {
+                margin-top: -7px;
+            }
+        }
+    }
+}
+
+.login {
+    padding: 0;
+    .login_row {
+        max-width: 90%;
+        margin: auto;
+        &.login_row--background-white {
+            background-color: color($colors, main-white); 
+        }
+        .login_form {
+            width: 100%;
+            .form_list {
+                margin-bottom: 17px;
+                .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+                    border-bottom-color: color($colors, primary);
+                }
+                .login_form-column {
+                    width: 100%;
+                    margin: 0 0 30px;
+                    padding-left: 0;
+                    &.margin--zero {
+                        margin: 0;
+                    }
+                    &.item-block:first-child {
+                        border-top: 0px solid #c8c7cc;
+                    }
+                    .login_form--no-underline, .login_form--no-underline .item-inner {
+                        border-bottom: 0px solid #c8c7cc;
+                        .checkbox {
+                            margin-right: 8px; 
+                        }
+                    }
+                    .login_form-label--small {
+                        font-size: 14px;
+                        margin-right: 0;
+                    }
+                    .login_input {
+                        margin: 15px 10px;
+                    }
+                }
+            }
+            .danger-text {
+                color: color($colors, main-red);
+            }
+        }
+    }
+    .login_button--flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login_button {
+        text-align: center;
+        font-size: 18px;
+        color: color($colors, main-red);
+        border-color: color($colors, main-red);
+        &.login_button--background-color {
+            background-color: color($colors, main-red);
+            transition: 0.2s;
+            &:hover {
+                background-color: color($colors, light-red);
+                transition: 0.2s;
+            }
+        }
+    }
+    .login_register {
+        margin: 15px 0;
+        text-align: center;
+        .login_register-link {
+            color: color($colors, main-red);
+            font-weight: 600;
+        }
+    }
+    hr {
+        background-color: lightgray;
+    }
+    .login_or {
+        margin: 0;
+        padding: 0 15px;
+        color: lightgray;
+    }
+}
